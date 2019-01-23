@@ -7,6 +7,7 @@ import Index from './pages/index'
 import configStore from './store'
 
 import './app.less'
+import Second from './pages/second/second';
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -27,7 +28,8 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/index/index'
+      'pages/index/index',
+      'pages/second/second'
     ],
     window: {
       backgroundTextStyle: 'light',

@@ -1,11 +1,13 @@
-import { ComponentClass } from 'react'
+// import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 
-import { add, minus, asyncAdd } from '../../actions/counter'
+import { add, minus, asyncByThunk } from '../../actions/counter'
 
 import './index.less'
+import { Icounter } from '../../reducers/counter';
+import { ComponentClass } from 'react';
 
 // #region 书写注意
 //
@@ -17,28 +19,17 @@ import './index.less'
 //
 // #endregion
 
-type PageStateProps = {
-  counter: {
-    num: number
-  }
-}
+interface IndexState{}
 
-type PageDispatchProps = {
+interface Iprops {
+  counter: Icounter,
   add: (payload:number) => void
   dec: (payload:number) => void
-  asyncAdd: (payload:number) => any
+  asyncByThunk: (payload:number) => any
 }
-
-type PageOwnProps = {}
-
-type PageState = {}
-
-type IProps = PageStateProps & PageDispatchProps & PageOwnProps
-
-interface Index {
-  props: IProps;
-}
-
+// interface Index {
+//   props: Iprops;
+// }
 @connect(({ counter }) => ({
   counter
 }), (dispatch) => ({
@@ -48,11 +39,11 @@ interface Index {
   dec (payload:number) {
     dispatch(minus(payload))
   },
-  asyncAdd (payload:number) {
-    dispatch(asyncAdd(payload))
+  asyncByThunk (payload:number) {
+    dispatch(asyncByThunk(payload))
   }
 }))
-class Index extends Component {
+class Index extends Component<Iprops,IndexState> {
 
     /**
    * 指定config的类型声明为: Taro.Config
@@ -65,9 +56,9 @@ class Index extends Component {
     navigationBarTitleText: '首页'
   }
 
-  componentWillReceiveProps (nextProps) {
-    console.log(this.props, nextProps)
-  }
+  // componentWillReceiveProps (nextProps) {
+  //   console.log(this.props, nextProps)
+  // }
 
   // componentWillUnmount () { }
 
@@ -82,18 +73,36 @@ class Index extends Component {
     this.props.dec(1);
   }
 
-  onHandleAsynsAdd = ()=>{
-    this.props.asyncAdd(1);
+  onHandleThunkAdd = ()=>{
+    this.props.asyncByThunk(1);
+  }
+  onHandleSagaAdd= ()=>{
+
   }
 
+  onHandleNextPage = ()=>{
+    //navigateTo可以使用navigateBack返回
+    Taro.navigateTo({
+      url: '/pages/second/second'
+    });
+    // Taro.redirectTo({
+    //   url: '/pages/second/second'
+    // })
+  }
+
+
   render () {
+    const {counter} = this.props;
     return (
       <View className='index'>
         <Button onClick={this.onHandleAdd}>+</Button>
         <Button onClick={this.onHandleAdd}>-</Button>
-        <Button onClick={this.onHandleAsynsAdd}>async</Button>
+        <Button onClick={this.onHandleNextPage}>第二页</Button>
+        <Button onClick={this.onHandleThunkAdd}>网络请求(redux-thunk)</Button>
+        <Button onClick={this.onHandleSagaAdd}>网络请求(redux-sage)</Button>
         <View className='test'><Text className='txt'>{this.props.counter.num}</Text></View>
-        <View><Text>Hello, World</Text></View>
+        <View><Text>{counter.loading?"loading":"loaded"}</Text></View>
+        <View><Text>网络结果:{counter.netResult}</Text></View>
       </View>
     )
   }
@@ -106,4 +115,5 @@ class Index extends Component {
 //
 // #endregion
 
-export default Index as ComponentClass<PageOwnProps, PageState>
+export default Index as ComponentClass<{}, IndexState>
+//export default Index

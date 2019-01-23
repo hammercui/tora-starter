@@ -1,22 +1,43 @@
-import { ADD, MINUS } from '../constants/counter'
+import { ADD, MINUS, CounterLoading, CounterNetResult } from '../constants/counter';
 
-const INITIAL_STATE = {
-  num: 0
+export interface Icounter {
+	num: number;
+	loading: boolean;
+	netResult: string;
 }
+const INITIAL_STATE: Icounter = {
+	num: 0,
+	loading: false,
+	netResult: '空'
+};
 
-export default function counter (state = INITIAL_STATE, {type,payload}) {
-  switch (type) {
-    case ADD:
-      return {
-        ...state,
-        num: state.num + payload
-      }
-     case MINUS:
-       return {
-         ...state,
-         num: state.num - payload
-       }
-     default:
-       return state
-  }
+export default function counter(state = INITIAL_STATE, { type, payload }): Icounter {
+	switch (type) {
+		case CounterLoading:
+			return {
+				...state,
+				loading: payload
+			};
+		case CounterNetResult:
+			return {
+				...state,
+				loading: false,
+				netResult: JSON.stringify(payload)
+			};
+		case ADD:
+			return {
+				...state,
+				loading: false,
+				num: state.num + payload
+			};
+		case MINUS:
+			return {
+				...state,
+				loading: false,
+				num: state.num - payload
+			};
+
+		default:
+			return state;
+	}
 }

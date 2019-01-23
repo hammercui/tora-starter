@@ -4,11 +4,12 @@
 	"description": "hello taro ",
 	"appid": "wx07f1e288bdd8d0b2",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": false,
 		"postcss": false,
 		"minified": false,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"condition": {}
