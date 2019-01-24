@@ -8,3 +8,13 @@ declare module "*.less";
 declare module "*.scss";
 declare module "*.sass";
 declare module "*.styl";
+
+declare interface IpropBoolean{
+  [propName: string]: boolean;
+}
+
+declare interface IdvaLoading{
+  effects:IpropBoolean;
+  global:boolean;
+  models:IpropBoolean;
+}

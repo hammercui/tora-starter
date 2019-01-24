@@ -2,9 +2,11 @@ import '@tarojs/async-await'
 import Taro, { Component, Config } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux'
 
+import dva from './dva'
+import models from './model'
 import Index from './pages/index'
 
-import configStore from './store'
+import { setGlobalData } from './utils/util';
 
 import './app.less'
 
@@ -14,7 +16,12 @@ if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
   require('nerv-devtools')
 }
 
-const store = configStore()
+//const store = configStore()
+const dvaApp = dva.createApp({
+  initialState: {},
+  models: models
+})
+const store = dvaApp.getStore()
 
 class App extends Component {
 

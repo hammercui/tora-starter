@@ -2,12 +2,10 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
-
-import { add, minus, asyncByThunk } from '../../actions/counter'
-
 import './index.less'
-import { Icounter } from '../../reducers/counter';
 import { ComponentClass } from 'react';
+import { Icounter } from 'src/model/counter';
+import action, { mapDispatchToProps } from '../../utils/action';
 
 // #region 书写注意
 //
@@ -22,27 +20,15 @@ import { ComponentClass } from 'react';
 interface IndexState{}
 
 interface Iprops {
-  counter: Icounter,
-  add: (payload:number) => void
-  dec: (payload:number) => void
-  asyncByThunk: (payload:number) => any
+  counter: Icounter;
+  loading: boolean;
+  dispatch: Function;
 }
-// interface Index {
-//   props: Iprops;
-// }
-@connect(({ counter }) => ({
-  counter
-}), (dispatch) => ({
-  add (payload:number) {
-    dispatch(add(payload))
-  },
-  dec (payload:number) {
-    dispatch(minus(payload))
-  },
-  asyncByThunk (payload:number) {
-    dispatch(asyncByThunk(payload))
-  }
-}))
+
+@connect(({ counter,loading}:{counter:Icounter;loading:IdvaLoading}) => ({
+  counter,
+  loading:loading.effects['counter/asyncDva']
+}),mapDispatchToProps)
 class Index extends Component<Iprops,IndexState> {
 
     /**
@@ -67,17 +53,14 @@ class Index extends Component<Iprops,IndexState> {
   // componentDidHide () { }
 
   onHandleAdd = ()=>{
-    this.props.add(1);
+    this.props.dispatch(action('counter/add',1));
   }
   onHandleDesc = ()=>{
-    this.props.dec(1);
+    this.props.dispatch(action('counter/minus',1));
   }
 
-  onHandleThunkAdd = ()=>{
-    this.props.asyncByThunk(1);
-  }
   onHandleSagaAdd= ()=>{
-
+    this.props.dispatch(action('counter/asyncDva'));
   }
 
   onHandleNextPage = ()=>{
@@ -92,16 +75,16 @@ class Index extends Component<Iprops,IndexState> {
 
 
   render () {
-    const {counter} = this.props;
+    const {counter,loading} = this.props;
     return (
       <View className='index'>
         <Button onClick={this.onHandleAdd}>+</Button>
         <Button onClick={this.onHandleAdd}>-</Button>
         <Button onClick={this.onHandleNextPage}>第二页</Button>
-        <Button onClick={this.onHandleThunkAdd}>网络请求(redux-thunk)</Button>
+        {/* <Button onClick={this.onHandleThunkAdd}>网络请求(redux-thunk)</Button> */}
         <Button onClick={this.onHandleSagaAdd}>网络请求(redux-dva)</Button>
         <View className='test'><Text className='txt'>{this.props.counter.num}</Text></View>
-        <View><Text>{counter.loading?"loading":"loaded"}</Text></View>
+        <View><Text>{!!loading?"loading":"loaded"}</Text></View>
         <View><Text>网络结果:{counter.netResult}</Text></View>
       </View>
     )
