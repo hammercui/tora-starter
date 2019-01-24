@@ -11,9 +11,9 @@ class Second extends Component {
     // navigateTo时使用
     Taro.navigateBack();
     //其他
-    // Taro.redirectTo({
-    //   url: '/pages/index/index'
-    // })
+    Taro.redirectTo({
+      url: '/pages/second/second'
+    })
 	};
 
 	render() {

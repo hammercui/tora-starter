@@ -162,16 +162,6 @@
     value-equal "^0.4.0"
     warning "^4.0.2"
 
-"@tarojs/taro-alipay@1.2.8":
-  version "1.2.8"
-  resolved "http://registry.npm.taobao.org/@tarojs/taro-alipay/download/@tarojs/taro-alipay-1.2.8.tgz#4374f5094b860aac5410ac159387981cfe77d35e"
-  integrity sha1-Q3T1CUuGCqxUEKwVk4eYHP53014=
-  dependencies:
-    "@tarojs/taro" "1.2.8"
-    "@tarojs/utils" "1.2.8"
-    lodash "^4.17.10"
-    prop-types "^15.6.1"
-
 "@tarojs/taro-h5@1.2.8":
   version "1.2.8"
   resolved "http://registry.npm.taobao.org/@tarojs/taro-h5/download/@tarojs/taro-h5-1.2.8.tgz#f31e084f63a0737c55b8469dece0fd3a78078258"
@@ -182,26 +172,6 @@
     jsonp-retry "^1.0.3"
     mobile-detect "^1.4.2"
     whatwg-fetch "^2.0.4"
-
-"@tarojs/taro-swan@1.2.8":
-  version "1.2.8"
-  resolved "http://registry.npm.taobao.org/@tarojs/taro-swan/download/@tarojs/taro-swan-1.2.8.tgz#7e959b2fcbcc312d9310b27ad35a996104df0d99"
-  integrity sha1-fpWbL8vMMS2TELJ601qZYQTfDZk=
-  dependencies:
-    "@tarojs/taro" "1.2.8"
-    "@tarojs/utils" "1.2.8"
-    lodash "^4.17.10"
-    prop-types "^15.6.1"
-
-"@tarojs/taro-tt@1.2.8":
-  version "1.2.8"
-  resolved "http://registry.npm.taobao.org/@tarojs/taro-tt/download/@tarojs/taro-tt-1.2.8.tgz#aba0264e52f18a3a5675bf0d0ed2b2a2eef8521c"
-  integrity sha1-q6AmTlLxijpWdb8NDtKyou74Uhw=
-  dependencies:
-    "@tarojs/taro" "1.2.8"
-    "@tarojs/utils" "1.2.8"
-    lodash "^4.17.10"
-    prop-types "^15.6.1"
 
 "@tarojs/taro-weapp@1.2.8":
   version "1.2.8"
@@ -3595,6 +3565,16 @@ http-parser-js@>=0.4.0:
   resolved "http://registry.npm.taobao.org/http-parser-js/download/http-parser-js-0.5.0.tgz#d65edbede84349d0dc30320815a15d39cc3cbbd8"
   integrity sha1-1l7b7ehDSdDcMDIIFaFdOcw8u9g=
 
+http-proxy-middleware@^0.19.1:
+  version "0.19.1"
+  resolved "http://registry.npm.taobao.org/http-proxy-middleware/download/http-proxy-middleware-0.19.1.tgz#183c7dc4aa1479150306498c210cdaf96080a43a"
+  integrity sha1-GDx9xKoUeRUDBkmMIQza+WCApDo=
+  dependencies:
+    http-proxy "^1.17.0"
+    is-glob "^4.0.0"
+    lodash "^4.17.11"
+    micromatch "^3.1.10"
+
 http-proxy-middleware@~0.18.0:
   version "0.18.0"
   resolved "http://registry.npm.taobao.org/http-proxy-middleware/download/http-proxy-middleware-0.18.0.tgz#0987e6bb5a5606e5a69168d8f967a87f15dd8aab"
@@ -3605,7 +3585,7 @@ http-proxy-middleware@~0.18.0:
     lodash "^4.17.5"
     micromatch "^3.1.9"
 
-http-proxy@^1.16.2:
+http-proxy@^1.16.2, http-proxy@^1.17.0:
   version "1.17.0"
   resolved "http://registry.npm.taobao.org/http-proxy/download/http-proxy-1.17.0.tgz#7ad38494658f84605e2f6db4436df410f4e5be9a"
   integrity sha1-etOElGWPhGBeL220Q230EPTlvpo=

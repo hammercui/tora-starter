@@ -99,7 +99,7 @@ class Index extends Component<Iprops,IndexState> {
         <Button onClick={this.onHandleAdd}>-</Button>
         <Button onClick={this.onHandleNextPage}>第二页</Button>
         <Button onClick={this.onHandleThunkAdd}>网络请求(redux-thunk)</Button>
-        <Button onClick={this.onHandleSagaAdd}>网络请求(redux-sage)</Button>
+        <Button onClick={this.onHandleSagaAdd}>网络请求(redux-dva)</Button>
         <View className='test'><Text className='txt'>{this.props.counter.num}</Text></View>
         <View><Text>{counter.loading?"loading":"loaded"}</Text></View>
         <View><Text>网络结果:{counter.netResult}</Text></View>

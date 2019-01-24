@@ -7,7 +7,6 @@ import Index from './pages/index'
 import configStore from './store'
 
 import './app.less'
-import Second from './pages/second/second';
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
