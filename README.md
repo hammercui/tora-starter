@@ -16,10 +16,13 @@
 ```
 安装
 yarn
+
 测试
 npm run dev:h5
+
 打包
 npm run build:h5
+
 启动alpha服务器
 npm run alpha
 ```

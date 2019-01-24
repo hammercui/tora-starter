@@ -6,7 +6,7 @@ import dva from './dva'
 import models from './model'
 import Index from './pages/index'
 
-import { setGlobalData } from './utils/util';
+//import { setGlobalData } from './utils/util';
 
 import './app.less'
 
