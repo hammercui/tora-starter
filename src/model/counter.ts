@@ -32,7 +32,7 @@ const counter: Imodel = {
 			return { ...state, num: state.num - payload };
 		},
 		setNetResult(state: Icounter, { payload }): Icounter {
-			return { ...state, netResult: payload };
+			return { ...state, netResult: JSON.stringify(payload) };
 		}
 	}
 };

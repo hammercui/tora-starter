@@ -11,3 +11,15 @@
 6. 路由跳转的使用示例
 7. video功能的使用示例
 
+## 启动
+
+```
+安装
+yarn
+测试
+npm run dev:h5
+打包
+npm run build:h5
+启动alpha服务器
+npm run alpha
+```

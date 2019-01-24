@@ -24,6 +24,19 @@ const config = {
         'transform-class-properties',
         'transform-object-rest-spread'
       ]
+    },
+    uglify: {
+      enable: true,
+      config: {
+        // 配置项同 https://github.com/mishoo/UglifyJS2#minify-options
+        warnings: false
+      }
+    },
+    csso: {
+      enable: true,
+      config: {
+        // 配置项同 https://github.com/css/csso#minifysource-options
+      }
     }
   },
   // 全局变量设置
@@ -76,6 +89,17 @@ const config = {
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
+    output: {
+      filename: 'js/[name].[hash:8].js',
+      chunkFilename: 'js/[name].[chunkhash:8].js'
+    },
+    cssLoaderOption: {
+      localIdentName: '[hash:base64]'
+    },
+    enableDll:true,
+    dllEntry: {
+      lib: ['nervjs', '@tarojs/taro-h5', '@tarojs/router', '@tarojs/components']
+    },
     module: {
       postcss: {
         autoprefixer: {
