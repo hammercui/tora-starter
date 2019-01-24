@@ -16,7 +16,7 @@
     "dev:tt": "npm run build:tt -- --watch",
     "dev:h5": "npm run build:h5 -- --watch",
     "dev:rn": "npm run build:rn -- --watch",
-    "alpha": "node ./config/alphaServer",
+    "alpha": "node ./config/alphaServer"
   },
   "author": "",
   "license": "MIT",
