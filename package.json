@@ -2,7 +2,7 @@
   "name": "taro-starter",
   "version": "1.0.0",
   "private": true,
-  "description": "taro starter kit ",
+  "description": "taro starter kit for mega front ",
   "scripts": {
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",

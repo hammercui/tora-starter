@@ -93,9 +93,20 @@ const config = {
       filename: 'js/[name].[hash:8].js',
       chunkFilename: 'js/[name].[chunkhash:8].js'
     },
-    cssLoaderOption: {
-      localIdentName: '[hash:base64]'
+    miniCssExtractPluginOption: {
+      filename: 'css/[name].[hash:8].css',
+      chunkFilename: 'css/[name].[hash:8].css'
     },
+    // cssLoaderOption: {
+    //   localIdentName: '[hash:base64]',
+    //   sourceMap: true,
+    // },
+    // lessLoaderOption: {
+    //   strictMath: true,
+    //   noIeCompat: true,
+    //   sourceMap: true
+    // },
+
     enableDll:true,
     dllEntry: {
       lib: ['nervjs', '@tarojs/taro-h5', '@tarojs/router', '@tarojs/components']
